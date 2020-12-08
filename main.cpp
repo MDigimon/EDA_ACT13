@@ -109,6 +109,7 @@ int main() {
 			else{
 				cout << "El Dato No Existe" << endl;
 			}
+			system("pause");
 		}
 		else if(opc == "10"){
 			
@@ -125,6 +126,7 @@ int main() {
 			else{
 				cout << "El Dato No Existe" << endl;
 			}
+			system("pause");
 		}
 		else if(opc == "0"){
 			cout << "FIN DEL PROGRAMA" << endl;

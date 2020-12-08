@@ -26,9 +26,9 @@ class Arreglo{
 		void eliminar(size_t p);
 		
 		T* buscar(const T& p);
-		T* buscar_todo(const T& p);
+		Arreglo<T*> buscar_todo(const T& p);
 		
-		string operator[](size_t p){
+		T operator[](size_t p){
 			return arreglo[p];
 		}
 		
@@ -140,14 +140,16 @@ T* Arreglo<T>::buscar(const T& p){
 
 
 template<class T>
-T* Arreglo<T>::buscar_todo(const T& p){
-	for(size_t i=0; i<cont; i++){
-		if(p == arreglo[i]){
-			return &arreglo[i];
-		}
-	}
-	
-	return nullptr;
+Arreglo<T*> Arreglo<T>::buscar_todo(const T& p){
+	 Arreglo<T*> datos;
+
+    for (size_t i = 0; i < cont; i++){
+        if (p == arreglo[i]) {
+            datos.insertar_final(&arreglo[i]);
+        }
+    }
+
+    return datos;
 }
 
 

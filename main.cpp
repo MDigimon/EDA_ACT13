@@ -9,40 +9,39 @@ using namespace std;
 
 int main() {
 	
-	string dato, opc, num;
+	string opc, num;
 	int f=1, g;
 	Arreglo<Computadora> arr;
+	Arreglo<Computadora*> buscar;
+	Computadora* bus;
 	Computadora temp = Computadora();
 	while(f == 1){
-		cout << "1.- Agregar Elemento al Inicio" << endl;
-		cout << "2.- Agregar Elemento al Final" << endl;
-		cout << "3.- Agregar Elemento en una Posicion" << endl;
-		cout << "4.- Eliminar Elemento al Inicio" << endl;
-		cout << "5.- Eliminar Elemento al Final" << endl;
-		cout << "6.- Eliminar Elemento en una Posicion" << endl;
-		cout << "7.- Numero de Elementos" << endl;
-		cout << "8.- Imprimir Elementos" << endl;
+		cout << "1.- Agregar Computadora al Inicio" << endl;
+		cout << "2.- Agregar Computadora al Final" << endl;
+		cout << "3.- Agregar Computadora en una Posicion" << endl;
+		cout << "4.- Eliminar Computadora al Inicio" << endl;
+		cout << "5.- Eliminar Computadora al Final" << endl;
+		cout << "6.- Eliminar Computadora en una Posicion" << endl;
+		cout << "7.- Numero de Computadoras" << endl;
+		cout << "8.- Imprimir Computadoras" << endl;
+		cout << "9.- Bucar Computadora" << endl;
+		cout << "10.- Buscar Varias Computadoras" << endl;
 		cout << "0.- Salir" << endl;
 		getline(cin, opc);
 		fflush(stdin);
 		
-		/*
+		
 		if(opc == "1"){
-			cout << "Dato: " ;
-			getline(cin, dato);
-			fflush(stdin);
-			arr.insertar_inicio(temp);
+			if(capturar(temp) != -1)
+				arr.insertar_inicio(temp);
+			
 		}
+		
 		else if(opc == "2"){
-			cout << "Dato: " ;
-			getline(cin, dato);
-			fflush(stdin);
-			arr.insertar_final(dato);
+			if(capturar(temp) != -1)
+				arr.insertar_final(temp);
 		}
 		else if(opc == "3"){
-			cout << "Dato: " ;
-			getline(cin, dato);
-			fflush(stdin);
 			cout << "Posicion: " ;
 			getline(cin, num);
 			g=1;
@@ -56,9 +55,8 @@ int main() {
 					}
 				}
 			}
-			if(g == 1){
-				arr.insertar(dato, stoi(num));
-			}
+			if(capturar(temp) != -1)
+				arr.insertar(temp, stoi(num));
 			
 		}
 		else if(opc == "4"){
@@ -69,6 +67,7 @@ int main() {
 			arr.eliminar_final();
 			system("pause");
 		}
+		
 		else if(opc == "6"){
 			cout << "Posicion: " ;
 			getline(cin, num);
@@ -98,6 +97,35 @@ int main() {
 			}
 			system("pause");
 		}
+		else if(opc == "9"){
+			cout << "Nombre: " ;
+			getline(cin, num);
+			
+			temp.set_nombre(num);
+			bus = arr.buscar(temp);
+			if(bus != nullptr){
+				cout << *bus << endl;
+			}
+			else{
+				cout << "El Dato No Existe" << endl;
+			}
+		}
+		else if(opc == "10"){
+			
+			cout << "Nombre: " ;
+			getline(cin, num);
+			temp.set_nombre(num);
+			buscar = arr.buscar_todo(temp);
+			if(buscar.size() > 0){
+				for (size_t i = 0; i < buscar.size(); i++){
+            		Computadora *c = buscar[i];
+            		cout << *c << endl;
+        		}
+			}
+			else{
+				cout << "El Dato No Existe" << endl;
+			}
+		}
 		else if(opc == "0"){
 			cout << "FIN DEL PROGRAMA" << endl;
 			f = 0;
@@ -110,7 +138,6 @@ int main() {
 		if(f == 1){
 			system("cls");
 		}
-		*/
 	}
 	
 	
